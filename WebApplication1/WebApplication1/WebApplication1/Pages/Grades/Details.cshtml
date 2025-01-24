@@ -1,0 +1,55 @@
+﻿@page "{id:int?}"
+@model WebApplication1.Pages.Grades.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Grade</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grade.Subject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.Prelim)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grade.Prelim)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.Midterm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grade.Midterm)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.Finals)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grade.Finals)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.Final_Grade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grade.Final_Grade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade.Year)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grade.Semester)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Grade.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

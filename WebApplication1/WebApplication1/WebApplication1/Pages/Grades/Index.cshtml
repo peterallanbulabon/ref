@@ -1,0 +1,94 @@
+﻿@page
+@model WebApplication1.Pages.Grades.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @{
+        var urId = Html.ViewContext.RouteData.Values["id"].ToString();
+        var url = urId;
+        var num = 1;
+    }
+    @if (urId.Equals(num))
+    {
+        <a asp-page="Create">Create New</a>
+
+    }
+    else
+    {
+        <a asp-page="Create" style="visibility:hidden;">Create New</a>
+    }
+</p>
+<form>
+    <p>
+        <select asp-for="Year" asp-items="Model.Year">
+            <option value="">All</option>
+        </select>
+        Sem: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade[0].Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade[0].Prelim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade[0].Midterm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade[0].Finals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade[0].Final_Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade[0].Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade[0].Semester)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Grade) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prelim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Midterm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Final_Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
